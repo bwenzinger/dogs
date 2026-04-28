@@ -50,21 +50,21 @@ git fetch --prune "$remote"
 
 after="$(git rev-parse "${remote}/${branch}")"
 if [[ "$before" == "$after" ]]; then
-  echo "Already deployed ${branch} at ${before}."
-  exit 0
+  echo "Local clone is already at ${branch} ${before}; rebuilding and restarting ${service_name}."
+else
+  git merge --ff-only "${remote}/${branch}"
 fi
 
-git merge --ff-only "${remote}/${branch}"
 npm ci
 npm run build
 
 if [[ "${SKIP_SERVICE_RESTART:-}" == "1" ]]; then
-  echo "Updated to ${after}; service restart skipped because SKIP_SERVICE_RESTART=1."
+  echo "Built ${after}; service restart skipped because SKIP_SERVICE_RESTART=1."
   exit 0
 fi
 
 if [[ "$(uname -s)" != "Linux" ]] || ! command -v systemctl >/dev/null 2>&1; then
-  echo "Updated to ${after}; restart ${service_name} manually on this machine."
+  echo "Built ${after}; restart ${service_name} manually on this machine."
   exit 0
 fi
 
@@ -80,4 +80,8 @@ else
   exit 1
 fi
 
-echo "Deployed ${before} -> ${after} and restarted ${service_name}."
+if [[ "$before" == "$after" ]]; then
+  echo "Rebuilt ${after} and restarted ${service_name}."
+else
+  echo "Deployed ${before} -> ${after} and restarted ${service_name}."
+fi

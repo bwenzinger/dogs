@@ -86,10 +86,10 @@ dogs
 
 The deploy workflow requires `self-hosted`, `linux`, and `dogs`, which keeps this deployment from being picked up by other self-hosted runners on the same machine.
 
-The workflow expects the live clone to be at:
+The workflow defaults to this live clone path on the home server:
 
 ```bash
-$HOME/dogs
+/home/bwenzinger/dev/dogs
 ```
 
 If the clone lives somewhere else, add this GitHub repository variable:

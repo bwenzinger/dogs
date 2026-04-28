@@ -27,5 +27,5 @@ jobs:
       - name: Deploy existing clone
         shell: bash
         run: |
-          export APP_DIR="${APP_DIR:-$HOME/dogs}"
+          export APP_DIR="${APP_DIR:-/home/bwenzinger/dev/dogs}"
           bash "$GITHUB_WORKSPACE/scripts/deploy-from-git.sh"
