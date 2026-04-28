@@ -1,0 +1,12 @@
+Project knowledge base for the dogs repository.
+
+- Primary purpose: build a clean, modern Vite + React adoption showcase page for a dog.
+- Static assets: the dog photos are served from the local `images/` folder in this repository.
+- App setup: uses Vite, React, TypeScript, MUI, ESLint, Prettier.
+- Contact button: sends email to `test@gmail.com` via mailto.
+- AI usage guidance: any AI working on this repo should read this file first and update it with relevant details as changes are made.
+
+Update history:
+- 2026-04-28: Created repository setup and app scaffold.
+- 2026-04-28: Added knowledge base file describing project intent and asset source.
+- 2026-04-28: Initialized Git preparation; cleaned generated JS outputs and updated TypeScript/MUI build compatibility.
