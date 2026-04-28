@@ -69,7 +69,22 @@ On GitHub, go to:
 Settings -> Actions -> Runners -> New self-hosted runner
 ```
 
-Choose Linux and follow GitHub's install commands on the server. Run the runner as the same Linux user that owns the `dogs` clone if possible.
+Choose Linux x64 and follow GitHub's install commands on the server. Run the runner as the same Linux user that owns the `dogs` clone if possible.
+
+Register this repository's runner in its own directory, such as:
+
+```bash
+mkdir -p ~/actions-runner-dogs
+cd ~/actions-runner-dogs
+```
+
+When `config.sh` prompts for labels, add this custom label:
+
+```text
+dogs
+```
+
+The deploy workflow requires `self-hosted`, `linux`, and `dogs`, which keeps this deployment from being picked up by other self-hosted runners on the same machine.
 
 The workflow expects the live clone to be at:
 
@@ -107,7 +122,7 @@ sudo visudo -f /etc/sudoers.d/dogs-deploy
 Use the Linux username from `whoami`:
 
 ```text
-YOUR_USER ALL=NOPASSWD: /bin/systemctl restart dogs
+YOUR_USER ALL=NOPASSWD: /usr/bin/systemctl restart dogs
 ```
 
 Then test the deploy script manually:

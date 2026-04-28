@@ -6,6 +6,7 @@ Project knowledge base for the dogs repository.
 - Contact button: sends email to `test@gmail.com` via mailto.
 - Deployment mirrors the MLB The Show home-server flow: systemd service via `scripts/install-systemd-service.sh`, deploy-on-push via `.github/workflows/deploy-home-server.yml`, and fast-forward deploy script at `scripts/deploy-from-git.sh`.
 - Server default: clone to `$HOME/dogs`, service name `dogs`, Vite preview host `0.0.0.0`, port `4173`.
+- GitHub Actions deploy workflow requires a self-hosted Linux runner with custom label `dogs`; use a dedicated runner directory such as `~/actions-runner-dogs` to avoid overlapping with other local runners.
 - AI usage guidance: any AI working on this repo should read this file first and update it with relevant details as changes are made.
 
 Update history:
@@ -16,3 +17,4 @@ Update history:
 - 2026-04-28: Revised adoption page layout so Dante's profile is a compact full-width quick-facts band above a full-width gallery.
 - 2026-04-28: Removed impersonal profile chips while keeping the same information in warmer profile notes.
 - 2026-04-28: Adjusted the featured gallery row so the right-hand image fills the full card height.
+- 2026-04-28: Scoped deploy workflow to a dedicated self-hosted runner label `dogs` and documented the non-overlapping runner setup.
