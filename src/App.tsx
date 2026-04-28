@@ -116,14 +116,17 @@ function App() {
           {dogImages.map((filename, index) => (
             <Grid key={filename} size={{ xs: 12, sm: 6, md: index === 0 ? 8 : 4 }}>
               <Card sx={{ borderRadius: 3, overflow: 'hidden', boxShadow: 4, height: '100%' }}>
-                <CardActionArea onClick={() => setSelectedPhoto(filename)}>
+                <CardActionArea
+                  onClick={() => setSelectedPhoto(filename)}
+                  sx={{ display: 'flex', flexDirection: 'column', height: '100%' }}
+                >
                   <CardMedia
                     component="img"
                     image={`/${filename}`}
                     alt={`Dog photo ${filename}`}
                     sx={{
                       width: '100%',
-                      height: { xs: 260, md: index === 0 ? 420 : 260 },
+                      height: { xs: 260, md: index <= 1 ? 420 : 260 },
                       objectFit: 'cover',
                       backgroundColor: '#f7f8fb',
                     }}

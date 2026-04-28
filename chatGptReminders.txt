@@ -15,3 +15,4 @@ Update history:
 - 2026-04-28: Added Linux systemd and self-hosted GitHub Actions deployment setup modeled after `C:\Dev\mlb-theshow`.
 - 2026-04-28: Revised adoption page layout so Dante's profile is a compact full-width quick-facts band above a full-width gallery.
 - 2026-04-28: Removed impersonal profile chips while keeping the same information in warmer profile notes.
+- 2026-04-28: Adjusted the featured gallery row so the right-hand image fills the full card height.
