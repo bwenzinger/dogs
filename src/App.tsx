@@ -53,60 +53,90 @@ function App() {
           </Typography>
         </Box>
 
-        <Grid container spacing={3} sx={{ mb: 6 }}>
-          <Grid size={{ xs: 12, lg: 5 }}>
-            <Card sx={{ borderRadius: 4, boxShadow: 4, height: '100%' }}>
-              <CardContent sx={{ p: 4 }}>
-                <Typography variant="h5" sx={{ fontWeight: 700, mb: 2 }}>
-                  Dante's profile
-                </Typography>
-                <Typography sx={{ mb: 2, color: 'text.secondary' }}>
-                  Everything you need to know about this wonderful companion.
-                </Typography>
-                <Box component="ul" sx={{ pl: 3, m: 0, color: 'text.primary' }}>
-                  <Typography component="li" sx={{ mb: 1 }}>
-                    Neutered male, Heinz 57 mix
-                  </Typography>
-                  <Typography component="li" sx={{ mb: 1 }}>
-                    Excellent with dogs, kids, and dog-savvy cats
-                  </Typography>
-                  <Typography component="li" sx={{ mb: 1 }}>
-                    Crate trained and house trained
-                  </Typography>
-                  <Typography component="li" sx={{ mb: 1 }}>
-                    Loves to run and thrives in public spaces
-                  </Typography>
-                  <Typography component="li">
-                    Enjoys tug games and having something in his mouth
-                  </Typography>
-                </Box>
-              </CardContent>
-            </Card>
-          </Grid>
+        <Box
+          component="section"
+          sx={{
+            mb: 5,
+            p: { xs: 3, md: 4 },
+            border: '1px solid',
+            borderColor: 'divider',
+            borderRadius: 3,
+            bgcolor: 'background.paper',
+          }}
+        >
+          <Stack spacing={3}>
+            <Box>
+              <Typography variant="h5" sx={{ fontWeight: 700 }}>
+                Dante's profile
+              </Typography>
+              <Typography sx={{ mt: 1, maxWidth: 760, color: 'text.secondary' }}>
+                A sweet, social companion who is comfortable in public settings,
+                enjoys running and tug games, and is ready for a home that wants an
+                eager best friend.
+              </Typography>
+            </Box>
 
-          <Grid size={{ xs: 12, lg: 7 }}>
-            <Grid container spacing={3}>
-              {dogImages.map((filename) => (
-                <Grid key={filename} size={{ xs: 12, sm: 6 }}>
-                  <Card sx={{ borderRadius: 3, overflow: 'hidden', boxShadow: 4, height: '100%' }}>
-                    <CardActionArea onClick={() => setSelectedPhoto(filename)}>
-                      <CardMedia
-                        component="img"
-                        image={`/${filename}`}
-                        alt={`Dog photo ${filename}`}
-                        sx={{ width: '100%', height: 260, objectFit: 'contain', backgroundColor: '#f7f8fb' }}
-                      />
-                      <CardContent sx={{ bgcolor: 'background.paper' }}>
-                        <Typography variant="subtitle1" sx={{ fontWeight: 700 }}>
-                          Tap to enlarge
-                        </Typography>
-                      </CardContent>
-                    </CardActionArea>
-                  </Card>
-                </Grid>
-              ))}
+            <Box
+              sx={{
+                display: 'grid',
+                gap: 2,
+                gridTemplateColumns: { xs: '1fr', md: 'repeat(3, 1fr)' },
+              }}
+            >
+              <Box>
+                <Typography variant="subtitle1" sx={{ fontWeight: 700 }}>
+                  At home
+                </Typography>
+                <Typography sx={{ mt: 0.75, color: 'text.secondary' }}>
+                  Dante is a neutered Heinz 57 mix who is already house trained
+                  and crate trained.
+                </Typography>
+              </Box>
+              <Box>
+                <Typography variant="subtitle1" sx={{ fontWeight: 700 }}>
+                  With family
+                </Typography>
+                <Typography sx={{ mt: 0.75, color: 'text.secondary' }}>
+                  He has done well with dogs, kids, and dog-savvy cats.
+                </Typography>
+              </Box>
+              <Box>
+                <Typography variant="subtitle1" sx={{ fontWeight: 700 }}>
+                  His favorite things
+                </Typography>
+                <Typography sx={{ mt: 0.75, color: 'text.secondary' }}>
+                  He loves to run, play tug, and carry something in his mouth.
+                </Typography>
+              </Box>
+            </Box>
+          </Stack>
+        </Box>
+
+        <Grid container spacing={3} sx={{ mb: 6 }}>
+          {dogImages.map((filename, index) => (
+            <Grid key={filename} size={{ xs: 12, sm: 6, md: index === 0 ? 8 : 4 }}>
+              <Card sx={{ borderRadius: 3, overflow: 'hidden', boxShadow: 4, height: '100%' }}>
+                <CardActionArea onClick={() => setSelectedPhoto(filename)}>
+                  <CardMedia
+                    component="img"
+                    image={`/${filename}`}
+                    alt={`Dog photo ${filename}`}
+                    sx={{
+                      width: '100%',
+                      height: { xs: 260, md: index === 0 ? 420 : 260 },
+                      objectFit: 'cover',
+                      backgroundColor: '#f7f8fb',
+                    }}
+                  />
+                  <CardContent sx={{ bgcolor: 'background.paper' }}>
+                    <Typography variant="subtitle1" sx={{ fontWeight: 700 }}>
+                      Tap to enlarge
+                    </Typography>
+                  </CardContent>
+                </CardActionArea>
+              </Card>
             </Grid>
-          </Grid>
+          ))}
         </Grid>
 
         <Stack

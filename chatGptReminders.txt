@@ -13,3 +13,5 @@ Update history:
 - 2026-04-28: Added knowledge base file describing project intent and asset source.
 - 2026-04-28: Initialized Git preparation; cleaned generated JS outputs and updated TypeScript/MUI build compatibility.
 - 2026-04-28: Added Linux systemd and self-hosted GitHub Actions deployment setup modeled after `C:\Dev\mlb-theshow`.
+- 2026-04-28: Revised adoption page layout so Dante's profile is a compact full-width quick-facts band above a full-width gallery.
+- 2026-04-28: Removed impersonal profile chips while keeping the same information in warmer profile notes.
