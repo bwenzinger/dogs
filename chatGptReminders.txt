@@ -4,9 +4,12 @@ Project knowledge base for the dogs repository.
 - Static assets: the dog photos are served from the local `images/` folder in this repository.
 - App setup: uses Vite, React, TypeScript, MUI, ESLint, Prettier.
 - Contact button: sends email to `test@gmail.com` via mailto.
+- Deployment mirrors the MLB The Show home-server flow: systemd service via `scripts/install-systemd-service.sh`, deploy-on-push via `.github/workflows/deploy-home-server.yml`, and fast-forward deploy script at `scripts/deploy-from-git.sh`.
+- Server default: clone to `$HOME/dogs`, service name `dogs`, Vite preview host `0.0.0.0`, port `4173`.
 - AI usage guidance: any AI working on this repo should read this file first and update it with relevant details as changes are made.
 
 Update history:
 - 2026-04-28: Created repository setup and app scaffold.
 - 2026-04-28: Added knowledge base file describing project intent and asset source.
 - 2026-04-28: Initialized Git preparation; cleaned generated JS outputs and updated TypeScript/MUI build compatibility.
+- 2026-04-28: Added Linux systemd and self-hosted GitHub Actions deployment setup modeled after `C:\Dev\mlb-theshow`.
