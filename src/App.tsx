@@ -124,9 +124,6 @@ function App() {
             <Typography variant="h4" sx={{ fontWeight: 700 }}>
               Ready to learn more?
             </Typography>
-            <Typography sx={{ mt: 1, color: 'text.secondary' }}>
-              Contact our adoption team and we'll connect you with the dog's caretaker.
-            </Typography>
           </Box>
           <Button
             component="a"
