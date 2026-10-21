@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState } from 'react';
 import {
   Box,
   Button,
@@ -12,8 +12,8 @@ import {
   DialogContent,
   Stack,
   Typography,
-} from '@mui/material'
-import Grid from '@mui/material/Grid'
+} from '@mui/material';
+import Grid from '@mui/material/Grid';
 
 const dogImages = [
   '067cb467-cfa2-4baa-aaed-6323e85c9343.jpg',
@@ -21,13 +21,14 @@ const dogImages = [
   '0fc0f18b-42d1-4e14-8f27-f3dc19db623d.jpg',
   '6c02e252-03a6-49ee-b7d2-7b28cc0c2371.png',
   'b83806fb-3e54-4e23-a63e-1443498f01ab.jpg',
-]
+];
 
 const mailtoLink =
-  'mailto:test@gmail.com?subject=Adopt%20a%20Dog&body=Hello%2C%0A%0AI%27m%20interested%20in adopting and would like more details about your dog.%0A%0AThanks!'
+  'mailto:test@gmail.com?subject=Adopt%20a%20Dog&body=Hello%2C%0A%0AI%27m%20interested%20in adopting and would like more details about your dog.%0A%0AThanks!';
 
 function App() {
-  const [selectedPhoto, setSelectedPhoto] = useState<string | null>(null)
+  const [selectedPhoto, setSelectedPhoto] = useState<string | null>(null);
+  const [modalIsOpen, setModalIsOpen] = useState<boolean>(false);
 
   return (
     <Box sx={{ bgcolor: '#f7f8fb', minHeight: '100vh', pb: 8 }}>
@@ -46,10 +47,13 @@ function App() {
           >
             Meet Dante - your next best friend.
           </Typography>
-          <Typography sx={{ mt: 2, maxWidth: 720, mx: 'auto', color: 'text.secondary' }}>
-            Dante is a neutered Heinz 57 mix with a joyful spirit and a gentle heart.
-            He excels in public settings, enjoys playtime with tug toys, and is ready
-            for a loving home with people, dogs, and dog-savvy cats.
+          <Typography
+            sx={{ mt: 2, maxWidth: 720, mx: 'auto', color: 'text.secondary' }}
+          >
+            Dante is a neutered Heinz 57 mix with a joyful spirit and a gentle
+            heart. He excels in public settings, enjoys playtime with tug toys,
+            and is ready for a loving home with people, dogs, and dog-savvy
+            cats.
           </Typography>
         </Box>
 
@@ -69,10 +73,12 @@ function App() {
               <Typography variant="h5" sx={{ fontWeight: 700 }}>
                 Dante's profile
               </Typography>
-              <Typography sx={{ mt: 1, maxWidth: 760, color: 'text.secondary' }}>
+              <Typography
+                sx={{ mt: 1, maxWidth: 760, color: 'text.secondary' }}
+              >
                 A sweet, social companion who is comfortable in public settings,
-                enjoys running and tug games, and is ready for a home that wants an
-                eager best friend.
+                enjoys running and tug games, and is ready for a home that wants
+                an eager best friend.
               </Typography>
             </Box>
 
@@ -114,11 +120,28 @@ function App() {
 
         <Grid container spacing={3} sx={{ mb: 6 }}>
           {dogImages.map((filename, index) => (
-            <Grid key={filename} size={{ xs: 12, sm: 6, md: index === 0 ? 8 : 4 }}>
-              <Card sx={{ borderRadius: 3, overflow: 'hidden', boxShadow: 4, height: '100%' }}>
+            <Grid
+              key={filename}
+              size={{ xs: 12, sm: 6, md: index === 0 ? 8 : 4 }}
+            >
+              <Card
+                sx={{
+                  borderRadius: 3,
+                  overflow: 'hidden',
+                  boxShadow: 4,
+                  height: '100%',
+                }}
+              >
                 <CardActionArea
-                  onClick={() => setSelectedPhoto(filename)}
-                  sx={{ display: 'flex', flexDirection: 'column', height: '100%' }}
+                  onClick={() => {
+                    setSelectedPhoto(filename);
+                    setModalIsOpen(true);
+                  }}
+                  sx={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    height: '100%',
+                  }}
                 >
                   <CardMedia
                     component="img"
@@ -170,25 +193,44 @@ function App() {
         </Stack>
       </Container>
 
-      <Dialog open={Boolean(selectedPhoto)} onClose={() => setSelectedPhoto(null)} maxWidth="xl" fullWidth>
-        <DialogContent sx={{ bgcolor: '#111827', p: 0, display: 'flex', justifyContent: 'center' }}>
+      <Dialog
+        open={modalIsOpen}
+        onClose={() => setModalIsOpen(false)}
+        maxWidth="xl"
+        fullWidth
+      >
+        <DialogContent
+          sx={{
+            bgcolor: '#111827',
+            p: 0,
+            display: 'flex',
+            justifyContent: 'center',
+          }}
+        >
           {selectedPhoto ? (
             <Box
               component="img"
               src={`/${selectedPhoto}`}
               alt={`Dog photo ${selectedPhoto}`}
-              sx={{ width: '100%', maxHeight: '80vh', objectFit: 'contain', backgroundColor: '#111827' }}
+              sx={{
+                width: '100%',
+                maxHeight: '80vh',
+                objectFit: 'contain',
+                backgroundColor: '#111827',
+              }}
             />
           ) : null}
         </DialogContent>
-        <DialogActions sx={{ justifyContent: 'center', bgcolor: '#f7f8fb', p: 2 }}>
-          <Button onClick={() => setSelectedPhoto(null)} variant="contained">
+        <DialogActions
+          sx={{ justifyContent: 'center', bgcolor: '#f7f8fb', p: 2 }}
+        >
+          <Button onClick={() => setModalIsOpen(false)} variant="contained">
             Close
           </Button>
         </DialogActions>
       </Dialog>
     </Box>
-  )
+  );
 }
 
-export default App
+export default App;
